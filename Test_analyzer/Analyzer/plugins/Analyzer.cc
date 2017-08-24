@@ -28,6 +28,11 @@
 #include "FWCore/Framework/interface/MakerMacros.h"
 
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
+
+#include "DataFormats/TrackReco/interface/Track.h"
+#include "DataFormats/TrackReco/interface/TrackFwd.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+
 //
 // class declaration
 //
@@ -90,6 +95,10 @@ void
 Analyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 {
    using namespace edm;
+
+	Handle<reco::TrackCollection> tracks;
+	iEvent.getByLabel("generalTracks", tracks); 
+	LogInfo("Demo") << "number of tracks "<<tracks->size();
 
 
 
